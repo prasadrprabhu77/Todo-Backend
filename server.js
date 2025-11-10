@@ -1,9 +1,9 @@
 const express = require("express")
 const cors = require("cors");
-const connectDB = require("./config/DB")
 const userRoute = require("./routes/userRoutes")
 const todoRoute = require("./routes/todoRoutes")
-const dotenv = require("dotenv")
+const dotenv = require("dotenv");
+const connectDB = require("./config/DB");
 
 const app = express()
 dotenv.config()
@@ -11,7 +11,7 @@ const PORT = process.env.PORT
 app.use(express.json())
 app.use(cors())
 
-connectDB()
+connectDB
 
 app.get("/test", (req,res) => res.send("test route is working fine"))
 
