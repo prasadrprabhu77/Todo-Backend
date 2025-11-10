@@ -4,10 +4,11 @@ const userRoute = require("./routes/userRoutes")
 const todoRoute = require("./routes/todoRoutes")
 const dotenv = require("dotenv")
 
+const app = express()
 dotenv.config()
 const PORT = process.env.PORT
-const app = express()
 app.use(express.json())
+app.use(cors())
 
 connectDB()
 
