@@ -14,7 +14,6 @@ app.use(cors())
 const startServer = async () => {
   try {
     await connectDB(); 
-    console.log("✅ DB Connected, starting server...");
 
     app.get("/test", (req, res) => res.send("Test route is working fine"));
 
