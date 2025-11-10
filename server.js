@@ -1,6 +1,6 @@
 const express = require("express")
 const cors = require("cors");
-const connectDB = require("./config.js/DB")
+const connectDB = require("./config/DB")
 const userRoute = require("./routes/userRoutes")
 const todoRoute = require("./routes/todoRoutes")
 const dotenv = require("dotenv")
@@ -23,5 +23,5 @@ app.use((req,res) =>{
 })
 
 app.listen(PORT, () =>{
-    console.log(`localhost running on PORT ${PORT}`)
+    console.log(`server running on PORT ${PORT}`)
 })
