@@ -11,17 +11,24 @@ const PORT = process.env.PORT
 app.use(express.json())
 app.use(cors())
 
-connectDB
+const startServer = async () => {
+  try {
+    await connectDB(); 
+    console.log("✅ DB Connected, starting server...");
 
-app.get("/test", (req,res) => res.send("test route is working fine"))
+    app.get("/test", (req, res) => res.send("Test route is working fine"));
 
-app.use("/user",userRoute)
-app.use("/todo",todoRoute)
+    app.use("/user", userRoute);
+    app.use("/todo", todoRoute);
 
-app.use((req,res) =>{
-    res.json({message:"something went wrong"})
-})
+    app.use((req, res) => {
+      res.status(404).json({ message: "Route not found" });
+    });
 
-app.listen(PORT, () =>{
-    console.log(`server running on PORT ${PORT}`)
-})
+    app.listen(PORT, () => console.log(`🚀 Server running on PORT ${PORT}`));
+  } catch (err) {
+    console.error("Failed to start server:", err.message);
+  }
+};
+
+startServer();
